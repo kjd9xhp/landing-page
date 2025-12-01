@@ -55,12 +55,12 @@ const Gallery = () => {
   return (
     <section id="gallery" className="section gallery">
       <div className="container">
-        <div className="section-title">
+        <div className="section-title scroll-animate fade-up">
           <h2>Hình Ảnh Game</h2>
           <p>Khám phá thế giới Triệu Thần Chiến qua những hình ảnh tuyệt đẹp</p>
         </div>
 
-        <div className="gallery-grid-antd">
+        <div className="gallery-grid-antd scroll-animate fade-up delay-2">
           <Image.PreviewGroup>
             {screenshots.map((screenshot, index) => (
               <div

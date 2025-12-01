@@ -60,6 +60,17 @@
   grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-lg);
   padding: var(--spacing-lg) 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth slide animation */
+.ant-carousel .slick-slide {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-carousel .slick-track {
+  display: flex !important;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Ant Design Card Customization */
@@ -72,12 +83,14 @@
   border: 2px solid rgba(245, 158, 11, 0.3) !important;
   border-radius: var(--radius-lg) !important;
   backdrop-filter: blur(10px);
-  transition: all var(--transition-normal) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
 }
 
 .character-card-antd:hover {
   border-color: var(--color-accent-primary) !important;
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: var(--shadow-lg), 0 0 30px rgba(245, 158, 11, 0.4) !important;
 }
 

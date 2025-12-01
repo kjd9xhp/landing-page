@@ -9,9 +9,12 @@ const CTA = () => {
       </div>
 
       <div className="container">
-        <div className="cta-content">
-          <h2 className="fade-in-up">Sẵn Sàng Bước Vào Chiến Trường?</h2>
-          <p className="fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <div className="cta-content scroll-animate fade-up">
+          <h2>Sẵn Sàng Bước Vào Cuộc Chiến?</h2>
+          <p className="cta-subtitle">
+            Tải ngay để nhận 10 lượt triệu hồi miễn phí!
+          </p>
+          <p>
             Tải game ngay hôm nay và nhận ngay 10 lượt triệu hồi miễn phí cùng
             thần tướng huyền thoại độc quyền cho tân thủ!
           </p>

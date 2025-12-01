@@ -206,12 +206,12 @@ const Characters = () => {
   return (
     <section id="characters" className="section characters">
       <div className="container">
-        <div className="section-title">
+        <div className="section-title scroll-animate fade-up">
           <h2>Thần Tướng Huyền Thoại</h2>
           <p>Triệu hồi các anh hùng từ thần thoại và lịch sử Á Đông</p>
         </div>
 
-        <div className="antd-carousel-wrapper">
+        <div className="antd-carousel-wrapper scroll-animate scale">
           <Button
             className="carousel-nav-btn prev"
             shape="circle"
@@ -223,9 +223,12 @@ const Characters = () => {
           <AntCarousel
             ref={carouselRef}
             autoplay
-            autoplaySpeed={3000}
+            autoplaySpeed={4000}
             dots={{ className: "custom-dots" }}
-            effect="fade"
+            effect="scrollx"
+            speed={800}
+            easing="ease-in-out"
+            pauseOnHover={true}
           >
             {groupedCharacters.map((group, groupIndex) => (
               <div key={groupIndex}>

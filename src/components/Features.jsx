@@ -7,56 +7,52 @@ const Features = () => {
       icon: "⚔️",
       title: "Chiến Thuật Đỉnh Cao",
       description:
-        "Kết hợp hàng trăm thần tướng với kỹ năng độc đáo để tạo nên đội hình bất bại",
+        "Xây dựng đội hình chiến thuật độc đáo với hàng trăm combo kỹ năng",
     },
     {
       icon: "🎴",
       title: "Thu Thập Thẻ Bài",
       description:
-        "Khám phá và sưu tầm hơn 300 lá bài thần tướng từ thần thoại Á Đông",
+        "Hơn 300 thẻ bài với thiết kế tuyệt đẹp và hiệu ứng độc quyền",
     },
     {
       icon: "🏆",
       title: "Đấu Trường PvP",
       description:
-        "Thách đấu người chơi toàn cầu, leo rank và chứng tỏ bản lĩnh chiến thuật",
+        "Thách đấu người chơi thực và leo rank trong mùa giải toàn server",
     },
     {
       icon: "✨",
       title: "Đồ Họa Tuyệt Đẹp",
-      description:
-        "Nghệ thuật thẻ bài được vẽ tay tinh xảo, hiệu ứng kỹ năng mãn nhãn",
+      description: "Hiệu ứng kỹ năng mãn nhãn với công nghệ đồ họa hiện đại",
     },
     {
       icon: "🎯",
       title: "Nhiệm Vụ Phong Phú",
-      description:
-        "Chinh phục các thử thách PvE, mở khóa câu chuyện huyền thoại",
+      description: "Khám phá câu chuyện sâu sắc qua hàng trăm nhiệm vụ PvE",
     },
     {
       icon: "👥",
       title: "Bang Hội Sôi Động",
-      description:
-        "Tham gia bang hội, hợp tác cùng đồng đội chinh phục boss khổng lồ",
+      description: "Tham gia bang hội, chiến đấu boss và nhận thưởng hấp dẫn",
     },
   ];
 
   return (
     <section id="features" className="section features">
       <div className="container">
-        <div className="section-title">
+        <div className="section-title scroll-animate fade-up">
           <h2>Tính Năng Nổi Bật</h2>
-          <p>
-            Trải nghiệm game thẻ bài chiến thuật đỉnh cao với đồ họa tuyệt đẹp
-          </p>
+          <p>Trải nghiệm gameplay đỉnh cao với đồ họa tuyệt đẹp</p>
         </div>
 
-        <div className="features-grid grid grid-3">
+        <div className="features-grid">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="feature-card glass-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`feature-card glass-card scroll-animate fade-up delay-${
+                (index % 6) + 1
+              }`}
             >
               <div className="feature-icon">{feature.icon}</div>
               <h3>{feature.title}</h3>
