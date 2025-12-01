@@ -1,0 +1,296 @@
+.characters {
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.characters::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(139, 92, 246, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* Ant Design Carousel Wrapper */
+.antd-carousel-wrapper {
+  position: relative;
+  margin-top: var(--spacing-2xl);
+  padding: 0 80px;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(245, 158, 11, 0.3) !important;
+  color: var(--color-accent-primary) !important;
+  width: 50px !important;
+  height: 50px !important;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: var(--color-accent-primary) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+.carousel-nav-btn.prev {
+  left: 0;
+}
+
+.carousel-nav-btn.next {
+  right: 0;
+}
+
+/* Characters Grid */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+}
+
+/* Ant Design Card Customization */
+.character-card-antd {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.2) 0%,
+    rgba(239, 68, 68, 0.2) 100%
+  ) !important;
+  border: 2px solid rgba(245, 158, 11, 0.3) !important;
+  border-radius: var(--radius-lg) !important;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal) !important;
+}
+
+.character-card-antd:hover {
+  border-color: var(--color-accent-primary) !important;
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(245, 158, 11, 0.4) !important;
+}
+
+.character-card-antd .ant-card-body {
+  background: transparent !important;
+  color: var(--color-text-primary) !important;
+}
+
+.character-card-antd .ant-card-meta-title {
+  color: var(--color-text-primary) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 1.1rem !important;
+}
+
+.character-card-antd .ant-card-meta-description {
+  color: var(--color-accent-primary) !important;
+  font-size: 0.9rem !important;
+}
+
+.card-cover {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.2) 0%,
+    rgba(139, 92, 246, 0.2) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-placeholder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+.card-name-large {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  padding: var(--spacing-sm);
+  z-index: 1;
+}
+
+.card-tags {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Custom Dots */
+.custom-dots {
+  bottom: -40px !important;
+}
+
+.custom-dots li button {
+  background: rgba(255, 255, 255, 0.2) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+.custom-dots li.slick-active button {
+  background: var(--color-accent-primary) !important;
+  width: 30px !important;
+  border-radius: 6px !important;
+}
+
+/* Character Details with Ant Design */
+.character-details-antd {
+  margin-top: var(--spacing-2xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.character-details-antd .ant-card-head {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.character-details-antd .ant-card-head-title {
+  color: var(--color-text-primary) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 2rem !important;
+}
+
+.character-details-antd .ant-card-body {
+  background: transparent !important;
+}
+
+.detail-title {
+  color: var(--color-accent-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+}
+
+.detail-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+/* Stats with Ant Design Progress */
+.stats-antd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.stat-label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.stat-item .ant-progress-text {
+  color: var(--color-accent-primary) !important;
+  font-weight: 700 !important;
+}
+
+.stat-item .ant-progress-bg {
+  background: var(--gradient-accent) !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .characters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .antd-carousel-wrapper {
+    padding: 0 60px;
+  }
+
+  .characters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .carousel-nav-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .antd-carousel-wrapper {
+    padding: 0 50px;
+  }
+
+  .characters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-name-large {
+    font-size: 1.2rem;
+  }
+
+  .carousel-nav-btn {
+    width: 35px !important;
+    height: 35px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .antd-carousel-wrapper {
+    padding: 0 40px;
+  }
+
+  .carousel-nav-btn {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .character-details-antd .ant-card-head-title {
+    font-size: 1.5rem !important;
+  }
+}

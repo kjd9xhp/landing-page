@@ -1,0 +1,340 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      ellipse at top,
+      rgba(139, 92, 246, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      rgba(239, 68, 68, 0.3) 0%,
+      transparent 50%
+    ),
+    rgba(10, 14, 26, 0.7);
+}
+
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      2px 2px at 20% 30%,
+      rgba(245, 158, 11, 0.3),
+      transparent
+    ),
+    radial-gradient(2px 2px at 60% 70%, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(239, 68, 68, 0.3), transparent),
+    radial-gradient(1px 1px at 80% 10%, rgba(245, 158, 11, 0.3), transparent);
+  background-size: 200% 200%;
+  animation: particleFloat 20s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 10%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%, 70% 30%, 20% 90%;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-accent-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-heading);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.1rem;
+}
+
+/* Card Showcase */
+.hero-visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-showcase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-card {
+  position: absolute;
+  width: 280px;
+  height: 400px;
+  border-radius: var(--radius-lg);
+  background-image: url("/images/hero-card-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(245, 158, 11, 0.2);
+  transition: all var(--transition-slow);
+  overflow: hidden;
+}
+
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(239, 68, 68, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+.card-1 {
+  transform: rotate(-10deg) translateX(-50px);
+  z-index: 1;
+  animation: cardFloat1 4s ease-in-out infinite;
+}
+
+.card-2 {
+  transform: rotate(0deg);
+  z-index: 3;
+  animation: cardFloat2 4s ease-in-out infinite 0.5s;
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(245, 158, 11, 0.4);
+}
+
+.card-3 {
+  transform: rotate(10deg) translateX(50px);
+  z-index: 2;
+  animation: cardFloat3 4s ease-in-out infinite 1s;
+}
+
+@keyframes cardFloat1 {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateX(-50px) translateY(0);
+  }
+  50% {
+    transform: rotate(-12deg) translateX(-50px) translateY(-15px);
+  }
+}
+
+@keyframes cardFloat2 {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-20px);
+  }
+}
+
+@keyframes cardFloat3 {
+  0%,
+  100% {
+    transform: rotate(10deg) translateX(50px) translateY(0);
+  }
+  50% {
+    transform: rotate(12deg) translateX(50px) translateY(-10px);
+  }
+}
+
+.showcase-card:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  z-index: 10;
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(245, 158, 11, 0.6);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--color-accent-primary);
+  border-radius: 25px;
+  position: relative;
+}
+
+.scroll-arrow::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent-primary);
+  border-radius: 50%;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    top: 10px;
+    opacity: 1;
+  }
+  100% {
+    top: 30px;
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    height: 400px;
+  }
+
+  .showcase-card {
+    width: 220px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-visual {
+    height: 300px;
+  }
+
+  .showcase-card {
+    width: 180px;
+    height: 260px;
+  }
+
+  .card-1 {
+    transform: rotate(-10deg) translateX(-30px);
+  }
+
+  .card-3 {
+    transform: rotate(10deg) translateX(30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  .hero-visual {
+    height: 250px;
+  }
+
+  .showcase-card {
+    width: 140px;
+    height: 200px;
+  }
+
+  .card-1,
+  .card-3 {
+    display: none;
+  }
+}

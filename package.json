@@ -1,0 +1,25 @@
+{
+  "name": "landingpage",
+  "version": "1.0.0",
+  "description": "Triệu Thần Chiến - Landing Page",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "game",
+    "landing-page",
+    "react"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "antd": "^6.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "vite": "^7.2.4"
+  }
+}
