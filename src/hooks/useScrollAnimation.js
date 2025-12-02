@@ -1,5 +1,16 @@
 import { useEffect } from "react";
 
+// Throttle function for better performance
+const throttle = (func, delay) => {
+  let lastCall = 0;
+  return (...args) => {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) return;
+    lastCall = now;
+    return func(...args);
+  };
+};
+
 const useScrollAnimation = () => {
   useEffect(() => {
     const observerOptions = {
@@ -10,9 +21,17 @@ const useScrollAnimation = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          // Add will-change hint before animation
+          entry.target.style.willChange = "opacity, transform";
           entry.target.classList.add("animate-in");
-          // Optional: unobserve after animation to improve performance
-          // observer.unobserve(entry.target);
+
+          // Remove will-change after animation completes
+          setTimeout(() => {
+            entry.target.style.willChange = "auto";
+          }, 1000);
+
+          // Unobserve after animation to improve performance
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);

@@ -11,7 +11,7 @@ const Hero = () => {
 
       <div className="hero-content container">
         <div className="hero-text fade-in-up">
-          <h1 className="hero-title">TRIỆU THẦN CHIẾN</h1>
+          <h1 className="hero-title glow-text">TRIỆU THẦN CHIẾN</h1>
           <p className="hero-subtitle">
             Triệu Hồi Thần Tướng - Chinh Phục Thiên Hạ
           </p>
