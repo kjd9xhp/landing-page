@@ -11,12 +11,17 @@ const Characters = () => {
     {
       id: 1,
       name: "Phàm Nhân",
-      title: "Khởi Đầu Tu Luyện",
-      rarity: "Thường",
-      element: "Thổ",
+      title: "Luyện Khí Kỳ",
+      rarity: "Huyền Thoại",
+      element: "Hỏa",
+      image: "/images/pham_nhan.png",
+      stats: {
+        attack: 95,
+        defense: 75,
+        skill: 88,
+      },
       description:
-        "Người phàm bắt đầu hành trình tu tiên, nền tảng của mọi tu sĩ.",
-      stats: { attack: 10, defense: 10, skill: 10 },
+        "Tu sĩ phàm nhân với ý chí kiên cường, bước đầu vào con đường tu tiên đầy gian nan.",
     },
     {
       id: 2,
@@ -24,6 +29,7 @@ const Characters = () => {
       title: "Luyện Khí Kỳ",
       rarity: "Thường",
       element: "Mộc",
+      image: "/images/tu_si.png",
       description: "Bước đầu tiên trên con đường tu tiên, tích lũy linh khí.",
       stats: { attack: 20, defense: 15, skill: 18 },
     },
@@ -33,6 +39,7 @@ const Characters = () => {
       title: "Phù Lục Sư",
       rarity: "Hiếm",
       element: "Kim",
+      image: "/images/thay_bua.png",
       description: "Sử dụng phù chú để triệu hồi và phòng thủ.",
       stats: { attack: 30, defense: 25, skill: 35 },
     },
@@ -42,6 +49,7 @@ const Characters = () => {
       title: "Pháp Thuật Sư",
       rarity: "Hiếm",
       element: "Thủy",
+      image: "/images/thay_phap.png",
       description: "Thông thạo các pháp thuật cơ bản, kiểm soát ngũ hành.",
       stats: { attack: 40, defense: 30, skill: 45 },
     },
@@ -51,6 +59,7 @@ const Characters = () => {
       title: "Ngũ Hành Chưởng",
       rarity: "Tinh Anh",
       element: "Hỏa",
+      image: "/images/phap_su.png",
       description: "Tinh thông ngũ hành pháp thuật, sức mạnh vượt trội.",
       stats: { attack: 50, defense: 40, skill: 55 },
     },
@@ -60,6 +69,7 @@ const Characters = () => {
       title: "Thiên Địa Linh",
       rarity: "Tinh Anh",
       element: "Lôi",
+      image: "/images/dai_phap_su.png",
       description: "Đại pháp sư với khả năng điều khiển thiên địa linh khí.",
       stats: { attack: 60, defense: 50, skill: 65 },
     },
@@ -222,7 +232,7 @@ const Characters = () => {
 
           <AntCarousel
             ref={carouselRef}
-            autoplay
+            autoplay={false}
             autoplaySpeed={4000}
             dots={{ className: "custom-dots" }}
             effect="scrollx"
@@ -241,9 +251,25 @@ const Characters = () => {
                       onClick={() => setSelectedCard(char)}
                       cover={
                         <div className="card-cover">
-                          <div className="card-placeholder">
-                            <span className="card-name-large">{char.name}</span>
-                          </div>
+                          {char.image ? (
+                            <img
+                              src={char.image}
+                              alt={char.name}
+                              className="character-image"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                display: "block",
+                              }}
+                            />
+                          ) : (
+                            <div className="card-placeholder">
+                              <span className="card-name-large">
+                                {char.name}
+                              </span>
+                            </div>
+                          )}
                         </div>
                       }
                     >

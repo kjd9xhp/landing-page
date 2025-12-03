@@ -474,3 +474,55 @@ html {
 .scroll-animate.animate-in {
   will-change: opacity, transform;
 }
+
+/* Advanced Performance Optimizations */
+
+/* Contain layout and paint for better performance */
+.hero,
+.features,
+.characters,
+.gallery,
+.cta {
+  contain: layout style paint;
+}
+
+/* Optimize font rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+
+/* Optimize images - add to img tags */
+img {
+  content-visibility: auto;
+  loading: lazy;
+}
+
+/* Reduce repaints for fixed elements */
+.navbar,
+.scroll-indicator {
+  contain: layout style;
+}
+
+/* Optimize animations - use compositing layers */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-animate,
+  .hero-gradient,
+  .hero-particles,
+  .showcase-card {
+    will-change: auto;
+  }
+  
+  .scroll-animate.animate-in {
+    will-change: opacity, transform;
+  }
+}
+
+/* Content visibility for off-screen sections */
+.characters,
+.gallery {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
