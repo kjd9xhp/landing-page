@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -7,13 +8,15 @@ import Characters from "./components/Characters";
 import Gallery from "./components/Gallery";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import CharacterPage from "./components/CharacterPage";
 import useScrollAnimation from "./hooks/useScrollAnimation";
+import { charactersData } from "./data/charactersData";
 
-function App() {
+function HomePage() {
   useScrollAnimation();
 
   return (
-    <div className="App">
+    <>
       <Navbar />
       <Hero />
       <Features />
@@ -21,6 +24,20 @@ function App() {
       <Gallery />
       <CTA />
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/character/:id"
+          element={<CharacterPage characters={charactersData} />}
+        />
+      </Routes>
     </div>
   );
 }

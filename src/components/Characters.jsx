@@ -1,211 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Carousel as AntCarousel, Card, Progress, Tag, Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import CharacterBio from "./CharacterBio";
+import { charactersData } from "../data/charactersData";
 import "./Characters.css";
 
 const Characters = () => {
+  const navigate = useNavigate();
   const [selectedCard, setSelectedCard] = useState(null);
+  const [bioCharacter, setBioCharacter] = useState(null);
+  const [bioVisible, setBioVisible] = useState(false);
   const carouselRef = React.useRef(null);
 
-  const characters = [
-    {
-      id: 1,
-      name: "Phàm Nhân",
-      title: "Luyện Khí Kỳ",
-      rarity: "Huyền Thoại",
-      element: "Hỏa",
-      image: "/images/pham_nhan.png",
-      stats: {
-        attack: 95,
-        defense: 75,
-        skill: 88,
-      },
-      description:
-        "Tu sĩ phàm nhân với ý chí kiên cường, bước đầu vào con đường tu tiên đầy gian nan.",
-    },
-    {
-      id: 2,
-      name: "Tu Sĩ",
-      title: "Luyện Khí Kỳ",
-      rarity: "Thường",
-      element: "Mộc",
-      image: "/images/tu_si.png",
-      description: "Bước đầu tiên trên con đường tu tiên, tích lũy linh khí.",
-      stats: { attack: 20, defense: 15, skill: 18 },
-    },
-    {
-      id: 3,
-      name: "Thầy Bùa",
-      title: "Phù Lục Sư",
-      rarity: "Hiếm",
-      element: "Kim",
-      image: "/images/thay_bua.png",
-      description: "Sử dụng phù chú để triệu hồi và phòng thủ.",
-      stats: { attack: 30, defense: 25, skill: 35 },
-    },
-    {
-      id: 4,
-      name: "Thầy Pháp",
-      title: "Pháp Thuật Sư",
-      rarity: "Hiếm",
-      element: "Thủy",
-      image: "/images/thay_phap.png",
-      description: "Thông thạo các pháp thuật cơ bản, kiểm soát ngũ hành.",
-      stats: { attack: 40, defense: 30, skill: 45 },
-    },
-    {
-      id: 5,
-      name: "Pháp Sư",
-      title: "Ngũ Hành Chưởng",
-      rarity: "Tinh Anh",
-      element: "Hỏa",
-      image: "/images/phap_su.png",
-      description: "Tinh thông ngũ hành pháp thuật, sức mạnh vượt trội.",
-      stats: { attack: 50, defense: 40, skill: 55 },
-    },
-    {
-      id: 6,
-      name: "Đại Pháp Sư",
-      title: "Thiên Địa Linh",
-      rarity: "Tinh Anh",
-      element: "Lôi",
-      image: "/images/dai_phap_su.png",
-      description: "Đại pháp sư với khả năng điều khiển thiên địa linh khí.",
-      stats: { attack: 60, defense: 50, skill: 65 },
-    },
-    {
-      id: 7,
-      name: "Pháp Vương",
-      title: "Vạn Pháp Tôn",
-      rarity: "Sử Thi",
-      element: "Phong",
-      image: "/images/phap_vuong.png",
-      description: "Pháp vương thống lĩnh vạn pháp, uy quyền chấn động.",
-      stats: { attack: 70, defense: 60, skill: 75 },
-    },
-    {
-      id: 8,
-      name: "Tán Tiên",
-      title: "Nhập Tiên Đạo",
-      rarity: "Sử Thi",
-      element: "Băng",
-      image: "/images/tan_tien.png",
-      description: "Bước vào cảnh giới tiên nhân, siêu thoát phàm tục.",
-      stats: { attack: 75, defense: 65, skill: 80 },
-    },
-    {
-      id: 9,
-      name: "Địa Tiên",
-      title: "Địa Linh Chưởng",
-      rarity: "Huyền Thoại",
-      element: "Thổ",
-      image: "/images/dia_tien.png",
-      description: "Địa tiên nắm giữ quyền năng đại địa, bất khả xâm phạm.",
-      stats: { attack: 80, defense: 75, skill: 85 },
-    },
-    {
-      id: 10,
-      name: "Chân Tiên",
-      title: "Chân Tiên Cảnh",
-      rarity: "Huyền Thoại",
-      element: "Kim",
-      image: "/images/chan_tien.png",
-      description: "Chân tiên với thần thông quảng đại, trường sinh bất tử.",
-      stats: { attack: 85, defense: 80, skill: 88 },
-    },
-    {
-      id: 11,
-      name: "Thiên Tiên",
-      title: "Thiên Giới Tôn",
-      rarity: "Huyền Thoại",
-      element: "Quang",
-      image: "/images/thien_tien.png",
-      description: "Thiên tiên cai quản thiên giới, uy quyền vô song.",
-      stats: { attack: 88, defense: 85, skill: 90 },
-    },
-    {
-      id: 12,
-      name: "Tiểu Thần",
-      title: "Thần Linh Sơ",
-      rarity: "Thần Thoại",
-      element: "Lôi",
-      image: "/images/tieu_than.png",
-      description: "Tiểu thần với thần lực ban đầu, bước vào thần giới.",
-      stats: { attack: 90, defense: 87, skill: 92 },
-    },
-    {
-      id: 13,
-      name: "Thượng Thần",
-      title: "Thượng Giới Chủ",
-      rarity: "Thần Thoại",
-      element: "Hỏa",
-      image: "/images/thuong_than.png",
-      description:
-        "Thượng thần chưởng quản thượng giới, quyền năng tối thượng.",
-      stats: { attack: 92, defense: 90, skill: 94 },
-    },
-    {
-      id: 14,
-      name: "Tiểu Thánh",
-      title: "Thánh Đạo Nhập",
-      rarity: "Thần Thoại",
-      element: "Phong",
-      image: "/images/tieu_thanh.png",
-      description: "Tiểu thánh lĩnh ngộ thánh đạo, siêu việt thần linh.",
-      stats: { attack: 94, defense: 92, skill: 95 },
-    },
-    {
-      id: 15,
-      name: "Đại Thánh",
-      title: "Thánh Giả Tôn",
-      rarity: "Thần Thoại",
-      element: "Thủy",
-      image: "/images/dai_thanh.png",
-      description: "Đại thánh với thánh lực vô biên, đứng đầu muôn linh.",
-      stats: { attack: 95, defense: 94, skill: 96 },
-    },
-    {
-      id: 16,
-      name: "Thánh Tổ",
-      title: "Vạn Thánh Tổ",
-      rarity: "Siêu Thần Thoại",
-      element: "Ám",
-      image: "/images/thanh_to.png",
-      description: "Thánh tổ khai sáng thánh đạo, tổ sư muôn đời.",
-      stats: { attack: 97, defense: 95, skill: 97 },
-    },
-    {
-      id: 17,
-      name: "Kim Tiên",
-      title: "Kim Thân Bất Hoại",
-      rarity: "Siêu Thần Thoại",
-      element: "Kim",
-      image: "/images/kim_tien.png",
-      description: "Kim tiên với kim thân bất hoại, bất diệt vĩnh hằng.",
-      stats: { attack: 98, defense: 97, skill: 98 },
-    },
-    {
-      id: 18,
-      name: "Thái Ấy",
-      title: "Thái Sơ Chí Tôn",
-      rarity: "Siêu Thần Thoại",
-      element: "Hỗn Độn",
-      image: "/images/thai_ay.png",
-      description: "Thái ấy cảnh giới, hỗn độn chưa khai, vạn vật chi tổ.",
-      stats: { attack: 99, defense: 98, skill: 99 },
-    },
-    {
-      id: 19,
-      name: "Hỗn Nguyên Đại La",
-      title: "Vũ Trụ Chí Tôn",
-      rarity: "Siêu Thần Thoại",
-      element: "Vũ Trụ",
-      image: "/images/hon_nguyen.png",
-      description:
-        "Hỗn nguyên đại la, chí tôn vô thượng, chưởng quản vạn giới.",
-      stats: { attack: 100, defense: 100, skill: 100 },
-    },
-  ];
+  const characters = charactersData;
 
   // Group characters into slides of 4
   const groupedCharacters = [];
@@ -261,7 +69,9 @@ const Characters = () => {
                       key={char.id}
                       hoverable
                       className="character-card-antd"
-                      onClick={() => setSelectedCard(char)}
+                      onClick={() => {
+                        navigate(`/character/${char.id}`);
+                      }}
                       cover={
                         <div className="card-cover">
                           {char.image ? (
@@ -354,6 +164,13 @@ const Characters = () => {
             </div>
           </Card>
         )}
+
+        {/* Character Biography Modal */}
+        <CharacterBio
+          character={bioCharacter}
+          visible={bioVisible}
+          onClose={() => setBioVisible(false)}
+        />
       </div>
     </section>
   );
