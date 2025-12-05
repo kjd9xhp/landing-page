@@ -31,7 +31,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero-visual float">
+        <div className="hero-visual">
           <div className="card-showcase">
             <div className="showcase-card card-1"></div>
             <div className="showcase-card card-2"></div>
